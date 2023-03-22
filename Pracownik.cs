@@ -12,4 +12,5 @@ public class Pracownik
         set => _wyn = (value < 0) ? 0 : value;
     }
     public override string ToString() => $"({Nazwisko}, {DataZatrudnienia:d MMM yyyy}, {Wynagrodzenie} PLN)";
+    public int CzasZatrudnienia => (DateTime.Now - DataZatrudnienia).Days / 30;
 }

@@ -44,4 +44,17 @@ public class Pracownik
         else
             return false;
     }
+    public override int GetHashCode() => (Nazwisko, DataZatrudnienia, Wynagrodzenie).GetHashCode();
+    public static bool Equals(Pracownik p1, Pracownik p2)
+    {
+        if ((p1 is null) && (p2 is null)) return true; // w C#: null == null
+        if ((p1 is null)) return false;
+
+        //p1 nie jest `null`, nie będzie NullReferenceException
+        return p1.Equals(p2);
+    }
+    public static bool operator ==(Pracownik p1, Pracownik p2) => Equals(p1, p2);
+    public static bool operator !=(Pracownik p1, Pracownik p2) => !(p1 == p2);
+
+    #endregion implementacja IEquatable<Pracownik>
 }

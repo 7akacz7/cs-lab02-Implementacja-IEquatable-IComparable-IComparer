@@ -11,4 +11,5 @@ public class Pracownik
         get => _wyn;
         set => _wyn = (value < 0) ? 0 : value;
     }
+    public override string ToString() => $"({Nazwisko}, {DataZatrudnienia:d MMM yyyy}, {Wynagrodzenie} PLN)";
 }

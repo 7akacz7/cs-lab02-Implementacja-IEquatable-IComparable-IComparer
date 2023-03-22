@@ -26,5 +26,22 @@ public class Pracownik
         dataPrzyjecia = DateTime.Today();
         wynagrodzenie = 0;
     }
+    #region implementacja IEquatable<Pracownik>
+    public bool Equals(Pracownik other)
+    {
+        if (other is null) return false;
+        if (Object.ReferenceEquals(this, other)) //other i this są referencjami do tego samego obiektu
+            return true;
 
+        return (Nazwisko == other.Nazwisko &&
+                DataZatrudnienia == other.DataZatrudnienia &&
+                Wynagrodzenie == other.Wynagrodzenie);
+    }
+    public override bool Equals(object obj)
+    {
+        if (obj is Pracownik)
+            return Equals((Pracownik)obj);
+        else
+            return false;
+    }
 }
